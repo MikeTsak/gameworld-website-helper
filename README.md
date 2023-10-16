@@ -26,4 +26,4 @@ A tool designed to help reviewers generate screenshots with watermarks and provi
 * [for GameWorld.gr](https://GameWorld.gr)
 
 ## License:
-[MIT](https://miketsak.gr).
+[MIT](https://github.com/MikeTsak/gameworld-website-helper/blob/main/LICENSE).
