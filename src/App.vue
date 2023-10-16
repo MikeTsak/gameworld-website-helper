@@ -28,6 +28,8 @@
 
       <h3>Screenshot tool for reviews</h3>
       <input class="input-style" type="file" multiple @change="handleFiles" />
+      (use Ctrl + Click to select multiple files)
+      
       <button class="button-style" @click="processImages">Resize and Add Watermark</button>
 
       <footer>
