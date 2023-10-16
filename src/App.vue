@@ -6,7 +6,7 @@
         Read articles by me
       </a>
 
-
+      <input class="input-style" type="text" v-model="prefix" placeholder="Enter game name for images" />
       <div class="rating-section">
         <div v-for="category in categories" :key="category.name" class="slider-container">
           <label :for="category.name">{{ category.label }}</label>
@@ -21,13 +21,12 @@
           <span>{{ average.toFixed(1) }}</span>
         </div>
       </div>
+      <button @click="openMetacriticSearch" class="metacritic-button">
+        <img src="https://pbs.twimg.com/profile_images/527528131171590144/EQXs3lpX_400x400.png" alt="Metacritic logo" />
+        Metacritic Score
+      </button>
 
       <h3>Screenshot tool for reviews</h3>
-      <input class="input-style" type="text" v-model="prefix" placeholder="Enter Game Name" />
-      <div class="metacritic-section">
-        <div v-if="isLoading">Fetching Metascore...</div>
-        <div v-else-if="metascore">{{ metascore }}</div>
-      </div>
       <input class="input-style" type="file" multiple @change="handleFiles" />
       <button class="button-style" @click="processImages">Resize and Add Watermark</button>
 
@@ -131,7 +130,12 @@ export default {
       // Remove or replace characters that are not allowed in filenames
       // Disallowed characters: \ / : * ? " < > |
       this.prefix = this.prefix.replace(/[\\/:*?"<>|]/g, '-');
-    }
+    },
+    openMetacriticSearch() {
+      const baseUrl = 'https://www.metacritic.com/search/';
+      const searchUrl = baseUrl + encodeURIComponent(this.prefix) + '/';
+      window.open(searchUrl, '_blank');
+    },
   },
 };
 </script>
@@ -261,18 +265,36 @@ footer {
 }
 
 .footer-link {
-  color: blue;
+  color: #3163bb;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-  color: darkblue;  /* Darkens the link color on hover for a subtle effect */
+  color: #274c99;  /* Darkens the link color on hover for a subtle effect */
 }
-.metacritic-section {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-  }
+.metacritic-button {
+  background: #3163bb;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.metacritic-button:hover {
+  background-color: #274c99;
+}
+
+.metacritic-button img {
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+  margin-right: 10px;
+}
 
 </style>
