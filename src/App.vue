@@ -51,7 +51,7 @@
           ref="cropper"
           :src="imgSrc"
           :aspect-ratio="16/9"
-          :view-mode="1"
+          :view-mode="2"
           :guides="true">
         </vue-cropper>
         <div class="button-crop">
